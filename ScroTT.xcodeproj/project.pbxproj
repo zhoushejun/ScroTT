@@ -14,6 +14,7 @@
 		CFF7D27D1A88BFCA00DA64F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFF7D27C1A88BFCA00DA64F7 /* Images.xcassets */; };
 		CFF7D2801A88BFCA00DA64F7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF7D27E1A88BFCA00DA64F7 /* LaunchScreen.xib */; };
 		CFF7D28C1A88BFCA00DA64F7 /* ScroTTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D28B1A88BFCA00DA64F7 /* ScroTTTests.m */; };
+		CFF7D2971A88C03000DA64F7 /* YBScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D2961A88C03000DA64F7 /* YBScrollController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		CFF7D2851A88BFCA00DA64F7 /* ScroTTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScroTTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF7D28A1A88BFCA00DA64F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFF7D28B1A88BFCA00DA64F7 /* ScroTTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScroTTTests.m; sourceTree = "<group>"; };
+		CFF7D2951A88C03000DA64F7 /* YBScrollController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBScrollController.h; sourceTree = "<group>"; };
+		CFF7D2961A88C03000DA64F7 /* YBScrollController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBScrollController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				CFF7D27C1A88BFCA00DA64F7 /* Images.xcassets */,
 				CFF7D27E1A88BFCA00DA64F7 /* LaunchScreen.xib */,
 				CFF7D26F1A88BFCA00DA64F7 /* Supporting Files */,
+				CFF7D2951A88C03000DA64F7 /* YBScrollController.h */,
+				CFF7D2961A88C03000DA64F7 /* YBScrollController.m */,
 			);
 			path = ScroTT;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFF7D2781A88BFCA00DA64F7 /* ViewController.m in Sources */,
+				CFF7D2971A88C03000DA64F7 /* YBScrollController.m in Sources */,
 				CFF7D2751A88BFCA00DA64F7 /* AppDelegate.m in Sources */,
 				CFF7D2721A88BFCA00DA64F7 /* main.m in Sources */,
 			);
