@@ -19,9 +19,6 @@
 @implementation YBScrollView
 
 - (void)drawRect:(CGRect)rect {
-    self.backgroundColor = [UIColor whiteColor];
-    currentIndexPathRow = 1;
-    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect))];
     tableView.dataSource = self;
     tableView.delegate = self;
@@ -30,6 +27,11 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.myTableView = tableView;
     [self addSubview:self.myTableView];
+    
+    if (!self.arrayContext || [self.arrayContext count] == 0) {
+        NSLog(@"please add value to arrayContext array object");
+        return;
+    }
     
     [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(autoScrollToPreviousIndexPath) userInfo:nil repeats:YES];
 }
