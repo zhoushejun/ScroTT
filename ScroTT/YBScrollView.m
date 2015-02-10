@@ -103,7 +103,7 @@
         }
             break;
     }
-    [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     if (currentIndexPathRow == 0) {
         [self removeLastObjectToFirst];
     }
