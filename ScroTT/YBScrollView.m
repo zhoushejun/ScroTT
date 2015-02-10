@@ -21,9 +21,6 @@
 - (void)drawRect:(CGRect)rect {
     self.backgroundColor = [UIColor whiteColor];
     currentIndexPathRow = 1;
-    if (!_direction) {//default
-        _direction = directionDown;
-    }
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect))];
     tableView.dataSource = self;
