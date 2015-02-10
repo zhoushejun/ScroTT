@@ -29,7 +29,7 @@
     [self addSubview:self.myTableView];
     
     if (!self.arrayContext || [self.arrayContext count] == 0) {
-        NSLog(@"please add value to arrayContext array object");
+        NSLog(@"please add value to arrayContext");
         return;
     }
     
