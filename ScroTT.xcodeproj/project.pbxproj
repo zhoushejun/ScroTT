@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CFC6B67E1A89D30E00780E61 /* YBScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6B67D1A89D30E00780E61 /* YBScrollView.m */; };
 		CFF7D2721A88BFCA00DA64F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D2711A88BFCA00DA64F7 /* main.m */; };
 		CFF7D2751A88BFCA00DA64F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D2741A88BFCA00DA64F7 /* AppDelegate.m */; };
 		CFF7D2781A88BFCA00DA64F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF7D2771A88BFCA00DA64F7 /* ViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CFC6B67C1A89D30E00780E61 /* YBScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBScrollView.h; sourceTree = "<group>"; };
+		CFC6B67D1A89D30E00780E61 /* YBScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBScrollView.m; sourceTree = "<group>"; };
 		CFF7D26C1A88BFCA00DA64F7 /* ScroTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScroTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF7D2701A88BFCA00DA64F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFF7D2711A88BFCA00DA64F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 				CFF7D26F1A88BFCA00DA64F7 /* Supporting Files */,
 				CFF7D2951A88C03000DA64F7 /* YBScrollController.h */,
 				CFF7D2961A88C03000DA64F7 /* YBScrollController.m */,
+				CFC6B67C1A89D30E00780E61 /* YBScrollView.h */,
+				CFC6B67D1A89D30E00780E61 /* YBScrollView.m */,
 			);
 			path = ScroTT;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 				CFF7D2781A88BFCA00DA64F7 /* ViewController.m in Sources */,
 				CFF7D2971A88C03000DA64F7 /* YBScrollController.m in Sources */,
 				CFF7D2751A88BFCA00DA64F7 /* AppDelegate.m in Sources */,
+				CFC6B67E1A89D30E00780E61 /* YBScrollView.m in Sources */,
 				CFF7D2721A88BFCA00DA64F7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
