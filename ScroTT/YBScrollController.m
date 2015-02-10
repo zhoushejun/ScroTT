@@ -14,16 +14,11 @@
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 // @}end of 获取屏幕 宽度、高度 及 状态栏 高度
 
-static float cellHeight = 44.0f;
-typedef enum : NSUInteger {
-    isFirst,
-    isLast,
-    isCenter,
-} Direction;
+static float cellHeight = 60.0f;
+
 
 @interface YBScrollController () <UITableViewDataSource, UITableViewDelegate> {
     NSInteger currentIndexPathRow;
-    Direction direction;  ///<表格滑动方向
 }
 
 @property (nonatomic, strong) UITableView *myTableView; ///< 显示滚动内容视图
@@ -36,9 +31,13 @@ typedef enum : NSUInteger {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor grayColor];
-    _arrayContext = [NSMutableArray arrayWithObjects:@"one", @"tow", @"three", @"four", nil];
+    if (!_arrayContext) {//test
+        _arrayContext = [NSMutableArray arrayWithObjects:@"one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one one ", @"tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow tow ", @"three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three three ", @"four four four four four four four four four four four four four four four four four four four four four four four four four four four ", nil];
+    }
     currentIndexPathRow = 1;
-    direction = isFirst;
+    if (!direction) {//default
+        direction = directionDown;
+    }
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, cellHeight)];
     tableView.dataSource = self;
@@ -47,9 +46,8 @@ typedef enum : NSUInteger {
     tableView.showsVerticalScrollIndicator = NO;
     self.myTableView = tableView;
     [self.view addSubview:self.myTableView];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:0];
-    [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionNone animated:NO];
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(scrollToPreviousIndexPath) userInfo:nil repeats:YES];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(autoScrollToPreviousIndexPath) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,14 +70,9 @@ typedef enum : NSUInteger {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCellId];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@", self.arrayContext[indexPath.row]];
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     NSLog(@"%ld", (long)indexPath.row);
-    if (0 == indexPath.row) {//向下拉
-        direction = isFirst;
-    }else if(indexPath.row == [self.arrayContext count]-1) {//向上拉
-        direction = isLast;
-    }else {
-        direction = isCenter;
-    }
     currentIndexPathRow = indexPath.row;
     return cell;
 }
@@ -91,7 +84,6 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - 
-
 - (void)removeLastObjectToFirst {
     [self.arrayContext insertObject:[self.arrayContext lastObject] atIndex:0];
     [self.arrayContext removeLastObject];
@@ -106,28 +98,32 @@ typedef enum : NSUInteger {
     [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionNone animated:NO];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (direction == isCenter) {
-        return;
-    }
-    if (direction == isFirst) {//向下拉
-        [self removeLastObjectToFirst];
-    }else {//向上拉
-        [self removeFirstObjectToLast];
-    }
-    NSLog(@"%@", self.arrayContext);
-    [self.myTableView reloadData];
-}
-
 #pragma mark -
-- (void)scrollToPreviousIndexPath {
-    if (direction != isCenter) {
-        direction = isFirst;
-        [self scrollViewDidEndDecelerating:nil];
-        return;
+/** 定时自动滚动 */
+- (void)autoScrollToPreviousIndexPath {
+    NSIndexPath *path = nil;
+    switch (direction) {
+        case directionDown:{
+            path = [NSIndexPath indexPathForRow:(currentIndexPathRow == 0 ? 0 : (currentIndexPathRow-1)) inSection:0];
+            if (currentIndexPathRow == 0) {
+                [self removeLastObjectToFirst];
+            }
+        }
+            break;
+        case directionUp:{
+            path = [NSIndexPath indexPathForRow:(currentIndexPathRow == (self.arrayContext.count-1) ? 0 : (currentIndexPathRow+1)) inSection:0];
+            if (currentIndexPathRow == self.arrayContext.count - 1){
+                [self removeFirstObjectToLast];
+            }
+        }
+            break;
+        default:{
+            path = [NSIndexPath indexPathForRow:(currentIndexPathRow == 0 ? 0 : (currentIndexPathRow-1)) inSection:0];
+        }
+            break;
     }
-    NSIndexPath *path = [NSIndexPath indexPathForRow:(currentIndexPathRow>0 ? currentIndexPathRow-1 : 0) inSection:0];
     [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionNone animated:YES];
     [self.myTableView reloadData];
 }
+
 @end
